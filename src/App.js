@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import HomeBooks from './HomeBooks';
+import Search from './Search';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 
@@ -34,6 +35,9 @@ class BooksApp extends Component {
             books={this.state.books}
             onUpdateShelf={this.updateShelf}
           />
+        )} />
+        <Route path="/search" render={() => (
+          <Search />
         )} />
       </div>
     );
