@@ -4,7 +4,6 @@ class CurrentlyReading extends Component {
   render() {
     const books = this.props.crbooks;
     if (books.length > 0) {
-      console.log(books[1].authors);
       return (
         <div className="bookshelf-books">
           <ol className="books-grid">
