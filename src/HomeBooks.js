@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CurrentlyReading from './CurrentlyReading';
+import WantToRead from './WantToRead';
 
 class HomeBooks extends Component {
   render() {
@@ -14,8 +15,16 @@ class HomeBooks extends Component {
             <div className="bookshelf">
               <h2 className="bookshelf-title">Currently Reading</h2>
               <CurrentlyReading
-                crbooks = {books.filter((book) =>
+                crbooks = {books.filter(book =>
                   (book.shelf === "currentlyReading")
+                )}
+              />
+            </div>
+            <div className="bookshelf">
+              <h2 className="bookshelf-title">Want to Read</h2>
+              <WantToRead
+                wtrbooks = {books.filter(book =>
+                  (book.shelf === "wantToRead")
                 )}
               />
             </div>
