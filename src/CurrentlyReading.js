@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class CurrentlyReading extends Component {
   render() {
     const books = this.props.crbooks;
+    const onUpdateShelf = this.props.onUpdateShelf;
     if (books.length > 0) {
       return (
         <div className="bookshelf-books">
@@ -13,7 +14,9 @@ class CurrentlyReading extends Component {
                   <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail}` }}></div>
                     <div className="book-shelf-changer">
-                      <select>
+                      <select value={book.shelf} onChange={function (event) {
+                        onUpdateShelf(book, event.target.value);
+                      }}>
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>

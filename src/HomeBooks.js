@@ -16,6 +16,7 @@ class HomeBooks extends Component {
             <div className="bookshelf">
               <h2 className="bookshelf-title">Currently Reading</h2>
               <CurrentlyReading
+                onUpdateShelf = {this.props.onUpdateShelf}
                 crbooks = {books.filter(book =>
                   (book.shelf === "currentlyReading")
                 )}
@@ -24,6 +25,7 @@ class HomeBooks extends Component {
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
               <WantToRead
+                onUpdateShelf = {this.props.onUpdateShelf}
                 wtrbooks = {books.filter(book =>
                   (book.shelf === "wantToRead")
                 )}
@@ -32,12 +34,16 @@ class HomeBooks extends Component {
             <div className="bookshelf">
               <h2 className="bookshelf-title">Read</h2>
               <Read
+                onUpdateShelf = {this.props.onUpdateShelf}
                 rbooks = {books.filter(book =>
                   (book.shelf === "read")
                 )}
               />
             </div>
           </div>
+        </div>
+        <div className="open-search">
+          <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
         </div>
       </div>
     )

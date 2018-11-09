@@ -9,11 +9,27 @@ class BooksApp extends Component {
     books: []
   }
 
-  componentDidMount() {
+  renderBooks() {
     BooksAPI.getAll().then((books) => {
+      // console.log(this.renderBooks);
       this.setState({ books });
     });
   }
+
+  componentDidMount() {
+    this.renderBooks();
+  }
+
+  updateShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+    .then(() => {
+      this.renderBooks();
+    });
+  }
+
+  // handleChange = () => {
+  //   console.log(this);
+  // }
 
   render() {
     return (
@@ -21,6 +37,7 @@ class BooksApp extends Component {
         <Route exact path="/" render={() => (
           <HomeBooks
             books={this.state.books}
+            onUpdateShelf={this.updateShelf}
           />
         )} />
       </div>
