@@ -11,7 +11,6 @@ class BooksApp extends Component {
 
   renderBooks() {
     BooksAPI.getAll().then((books) => {
-      // console.log(this.renderBooks);
       this.setState({ books });
     });
   }
@@ -26,10 +25,6 @@ class BooksApp extends Component {
       this.renderBooks();
     });
   }
-
-  // handleChange = () => {
-  //   console.log(this);
-  // }
 
   render() {
     return (
