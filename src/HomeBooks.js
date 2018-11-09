@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CurrentlyReading from './CurrentlyReading';
 import WantToRead from './WantToRead';
+import Read from './Read';
 
 class HomeBooks extends Component {
   render() {
@@ -25,6 +26,14 @@ class HomeBooks extends Component {
               <WantToRead
                 wtrbooks = {books.filter(book =>
                   (book.shelf === "wantToRead")
+                )}
+              />
+            </div>
+            <div className="bookshelf">
+              <h2 className="bookshelf-title">Read</h2>
+              <Read
+                rbooks = {books.filter(book =>
+                  (book.shelf === "read")
                 )}
               />
             </div>
