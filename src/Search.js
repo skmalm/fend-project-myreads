@@ -9,7 +9,7 @@ class Search extends Component {
   }
 
   updateQuery = query => {
-    this.setState({ query: query.trim()});
+    this.setState({ query: query.trimStart()});
     if (query) {
       this.searchBooks(query);
     } else {
@@ -57,7 +57,7 @@ class Search extends Component {
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("http://books.google.com/books/content?id=nggnmAEAC%E2%80%A6J&printsec=frontcover&img=1&zoom=1&source=gbs_api")' }}></div>
                       )}
                       <div className="book-shelf-changer">
-                      <select value={book.shelf} onChange={function (event) {
+                      <select defaultValue="none" onChange={function (event) {
                         onUpdateShelf(book, event.target.value);
                       }}>
                           <option value="move" disabled>Move to...</option>
