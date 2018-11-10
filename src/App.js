@@ -37,7 +37,9 @@ class BooksApp extends Component {
           />
         )} />
         <Route path="/search" render={() => (
-          <Search onUpdateShelf={this.updateShelf}/>
+          <Search
+          onUpdateShelf={this.updateShelf}
+          />
         )} />
       </div>
     );
