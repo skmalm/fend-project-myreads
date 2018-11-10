@@ -26,7 +26,6 @@ class Search extends Component {
       })
       searchResults.forEach((book) => {
         if (shelfIDs.includes(book.id)) {
-          console.log('there is a match here');
           let matchID = shelfIDs.find(element => element === book.id);
           let shelfMatch = this.props.shelfBooks.find(element => element.id === matchID);
           let resultsMatch = searchResults.find(element => element.id === matchID);
@@ -41,7 +40,6 @@ class Search extends Component {
   render() {
     const query = this.state.query;
     const onUpdateShelf = this.props.onUpdateShelf;
-    let shelfValue;
 
     return (
       <div className="search-books">
@@ -72,7 +70,7 @@ class Search extends Component {
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("http://books.google.com/books/content?id=nggnmAEAC%E2%80%A6J&printsec=frontcover&img=1&zoom=1&source=gbs_api")' }}></div>
                       )}
                       <div className="book-shelf-changer">
-                      <select defaultValue={book.shelf ? (shelfValue = book.shelf) : (shelfValue = "none")} onChange={function (event) {
+                      <select defaultValue={book.shelf ? book.shelf : "none"} onChange={function (event) {
                         onUpdateShelf(book, event.target.value);
                       }}>
                           <option value="move" disabled>Move to...</option>
