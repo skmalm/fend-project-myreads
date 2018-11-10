@@ -34,7 +34,7 @@ class Search extends Component {
         }
       });
       this.setState({ results: searchResults });
-    });
+    }).catch(() => console.log("No results"));
   }
 
   render() {
