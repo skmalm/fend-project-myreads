@@ -5,7 +5,7 @@ import * as BooksAPI from './BooksAPI';
 class Search extends Component {
   state = {
     query: '',
-    results: []
+    results: [],
   }
 
   updateQuery = query => {
@@ -20,8 +20,22 @@ class Search extends Component {
   searchBooks = query => {
     BooksAPI.search(query)
     .then(searchResults => {
+      const shelfIDs = [];
+      this.props.shelfBooks.forEach(function(book) {
+        shelfIDs.push(book.id);
+      })
+      searchResults.forEach((book) => {
+        if (shelfIDs.includes(book.id)) {
+          console.log('there is a match here');
+          let matchID = shelfIDs.find(element => element === book.id);
+          let shelfMatch = this.props.shelfBooks.find(element => element.id === matchID);
+          let resultsMatch = searchResults.find(element => element.id === matchID);
+          let matchIndex = searchResults.indexOf(resultsMatch);
+          searchResults[matchIndex].shelf = shelfMatch.shelf;
+        }
+      });
       this.setState({ results: searchResults });
-    })
+    });
   }
 
   render() {

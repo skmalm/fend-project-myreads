@@ -11,7 +11,8 @@ class BooksApp extends Component {
   }
 
   renderBooks() {
-    BooksAPI.getAll().then((books) => {
+    BooksAPI.getAll()
+    .then((books) => {
       this.setState({ books });
     });
   }
@@ -38,7 +39,8 @@ class BooksApp extends Component {
         )} />
         <Route path="/search" render={() => (
           <Search
-          onUpdateShelf={this.updateShelf}
+            shelfBooks={this.state.books}
+            onUpdateShelf={this.updateShelf}
           />
         )} />
       </div>
