@@ -90,7 +90,7 @@ class Search extends Component {
               ))}
             </ol>
           ) : (
-            <div>no results</div>
+            <div>No results.</div>
           )}
         </div>
       </div>
